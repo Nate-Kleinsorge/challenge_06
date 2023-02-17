@@ -2,13 +2,10 @@
 var now = moment().format("dddd, MMMM Do YYYY");
 document.getElementById("current-date").innerHTML = now;
 
-//get city name from button
 var weatherBtn = document.getElementById("weatherBtn");
 var userInput = document.querySelector(".search-form");
 var apid = "5bcb706be88d247e41f5a053ad2b527b"
 
-// weatherBtn.addEventListener("click", getCoords(loc));
-debugger
 weatherBtn.addEventListener('click', () => {
   var city = userInput.children[0].value;
   var loc = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apid}`;
@@ -39,7 +36,7 @@ function getWeather(url) {
         return response.json();
     })
     .then(function(data) {
-        console.log(data);
+        renderCurrentWeather(data);
     })
     .catch(function (error) {
       console.error(error);
